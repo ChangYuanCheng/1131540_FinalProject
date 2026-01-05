@@ -1,0 +1,25 @@
+# Graph
+
+## 1. Definition
+A graph G = (V, E) is a collection of vertices (V) and edges (E).
+
+## 2. Types
+- Directed / Undirected
+- Weighted / Unweighted
+
+## 3. Representation
+- Adjacency List
+- Adjacency Matrix
+
+## 4. Traversals
+- BFS (Breadth-First Search)
+- DFS (Depth-First Search)
+
+## 5. Applications
+- Network routing
+- Social networks
+- Topological sorting
+- Shortest path algorithms
+
+## 6. Reflection
+Graph is versatile for modeling connections and relationships.
