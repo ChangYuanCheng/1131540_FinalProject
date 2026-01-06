@@ -24,6 +24,7 @@
   - Linked List 可解決碎片問題，但降低存取效率；動態 Array 遇到擴充時也可能搬移整個陣列。
 
 - **Q5:** 如何計算 Array 擴充後的摊銷成本（amortized cost）？
+
   **AI提示回答:**
   - 每次 Array 滿了翻倍容量，搬移 n 個元素。  
   - n 次操作總成本 ~ 2n → 平均每次操作 O(1)；這就是 amortized analysis。
