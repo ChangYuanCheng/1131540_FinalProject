@@ -1,75 +1,47 @@
+//Heap 是一種完全二元樹，常用來實作 Priority Queue
+// 插入與刪除的時間複雜度為 O(log n)
 #include <iostream>
-#include <vector>
 using namespace std;
 
-class MinHeap {
+class MaxHeap {
 private:
-    vector<int> heap;
-
-    void heapifyUp(int index) {
-        while (index > 0) {
-            int parent = (index - 1) / 2;
-            if (heap[index] < heap[parent]) {
-                swap(heap[index], heap[parent]);
-                index = parent;
-            } else break;
-        }
-    }
-
-    void heapifyDown(int index) {
-        int left, right, smallest;
-        while (true) {
-            left = 2 * index + 1;
-            right = 2 * index + 2;
-            smallest = index;
-
-            if (left < heap.size() && heap[left] < heap[smallest]) smallest = left;
-            if (right < heap.size() && heap[right] < heap[smallest]) smallest = right;
-            if (smallest != index) {
-                swap(heap[index], heap[smallest]);
-                index = smallest;
-            } else break;
-        }
-    }
+    int heap[100];
+    int size;
 
 public:
+    MaxHeap() {
+        size = 0;
+    }
+
+    /*
+     insert：
+     - 將新元素放在最後
+     - 向上調整（heapify up）
+    */
     void insert(int val) {
-        heap.push_back(val);
-        heapifyUp(heap.size() - 1);
-    }
+        int i = size;
+        heap[i] = val;
+        size++;
 
-    void pop() {
-        if (heap.empty()) return;
-        heap[0] = heap.back();
-        heap.pop_back();
-        heapifyDown(0);
-    }
-
-    int top() {
-        if (heap.empty()) return -1;
-        return heap[0];
+        while (i != 0 && heap[(i - 1) / 2] < heap[i]) {
+            swap(heap[i], heap[(i - 1) / 2]);
+            i = (i - 1) / 2;
+        }
     }
 
     void display() {
-        for (int val : heap) cout << val << " ";
-        cout << endl;
+        for (int i = 0; i < size; i++)
+            cout << heap[i] << " ";
     }
 };
 
 int main() {
-    MinHeap h;
+    MaxHeap h;
+    h.insert(10);
     h.insert(30);
     h.insert(20);
-    h.insert(10);
-    h.insert(40);
+    h.insert(5);
 
-    cout << "Heap elements: ";
     h.display();
-
-    cout << "Top element: " << h.top() << endl;
-    h.pop();
-    cout << "After pop: ";
-    h.display();
-
     return 0;
 }

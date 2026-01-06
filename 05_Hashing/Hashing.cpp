@@ -1,7 +1,9 @@
+//Binay Search Tree
+
 #include <iostream>
 using namespace std;
 
-#define SIZE 10
+#define SIZE 7   // Hash table 大小"通常選質數"
 
 class HashTable {
 private:
@@ -9,56 +11,47 @@ private:
 
 public:
     HashTable() {
-        for (int i = 0; i < SIZE; i++) table[i] = -1;
+        for (int i = 0; i < SIZE; i++)
+            table[i] = -1;
     }
 
-    int hash(int key) {
+    /*
+     hash function：
+     將 key 映射到 table index
+     - 簡單示範：key % SIZE
+    */
+    int hashFunction(int key) {
         return key % SIZE;
     }
 
+    /*
+     insert：
+     - 若碰撞（collision），使用 linear probing
+     - 平均時間 O(1)，最差 O(n)
+    */
     void insert(int key) {
-        int idx = hash(key);
-        int startIdx = idx;
-        while (table[idx] != -1) {
-            idx = (idx + 1) % SIZE;  // Linear probing
-            if (idx == startIdx) {
-                cout << "Hash table is full\n";
-                return;
-            }
-        }
-        table[idx] = key;
-    }
+        int index = hashFunction(key);
 
-    bool search(int key) {
-        int idx = hash(key);
-        int startIdx = idx;
-        while (table[idx] != -1) {
-            if (table[idx] == key) return true;
-            idx = (idx + 1) % SIZE;
-            if (idx == startIdx) break;
+        // 發生 collision，就往後找空位
+        while (table[index] != -1) {
+            index = (index + 1) % SIZE;
         }
-        return false;
+        table[index] = key;
     }
 
     void display() {
         for (int i = 0; i < SIZE; i++) {
-            if (table[i] != -1) cout << i << " -> " << table[i] << endl;
-            else cout << i << " -> " << "empty" << endl;
+            cout << i << ": " << table[i] << endl;
         }
     }
 };
 
 int main() {
     HashTable ht;
-    ht.insert(15);
-    ht.insert(25);
-    ht.insert(35);
+    ht.insert(10);
+    ht.insert(21);  // 10 % 7 = 3, 21 % 7 = 0
+    ht.insert(17);  // 17 % 7 = 3 → collision
 
-    cout << "Hash Table contents:\n";
     ht.display();
-
-    int key = 25;
-    cout << key << (ht.search(key) ? " found\n" : " not found\n");
-
     return 0;
 }

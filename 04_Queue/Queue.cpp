@@ -10,55 +10,41 @@ private:
 
 public:
     Queue() {
-        front = -1;
-        rear = -1;
+        front = rear = 0;   // 空佇列狀態
     }
 
-    bool isEmpty() {
-        return front == -1;
-    }
-
-    bool isFull() {
-        return (rear + 1) % MAX == front;
-    }
-
+    /*
+     enqueue：
+     在尾端加入元素
+     - 使用循環方式避免空間浪費
+     - 時間複雜度 O(1)
+    */
     void enqueue(int x) {
-        if (isFull()) {
-            cout << "Queue Overflow\n";
+        if ((rear + 1) % MAX == front) {
+            cout << "Queue is full\n";
             return;
-        }
-        if (isEmpty()) {
-            front = rear = 0;
-        } else {
-            rear = (rear + 1) % MAX;
         }
         arr[rear] = x;
+        rear = (rear + 1) % MAX;
     }
 
+    /*
+     dequeue：
+     從前端移除元素
+     - 不需搬移資料
+     - 時間複雜度 O(1)
+    */
     void dequeue() {
-        if (isEmpty()) {
-            cout << "Queue Underflow\n";
-            return;
-        }
         if (front == rear) {
-            front = rear = -1;
-        } else {
-            front = (front + 1) % MAX;
-        }
-    }
-
-    void display() {
-        if (isEmpty()) {
             cout << "Queue is empty\n";
             return;
         }
-        int i = front;
-        while (true) {
-            cout << arr[i] << " ";
-            if (i == rear) break;
-            i = (i + 1) % MAX;
-        }
-        cout << endl;
+        front = (front + 1) % MAX;
+    }
+
+    int getFront() {
+        if (front == rear) return -1;
+        return arr[front];
     }
 };
 
@@ -68,14 +54,9 @@ int main() {
     q.enqueue(20);
     q.enqueue(30);
 
-    cout << "Queue elements: ";
-    q.display();
-
-    cout << "Dequeue an element\n";
+    cout << "Front element: " << q.getFront() << endl;
     q.dequeue();
-
-    cout << "After dequeue: ";
-    q.display();
+    cout << "After dequeue, front: " << q.getFront() << endl;
 
     return 0;
 }
