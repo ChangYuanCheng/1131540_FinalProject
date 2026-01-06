@@ -1,6 +1,10 @@
 #include <iostream>
 using namespace std;
-
+/*
+ Node 結構：
+ data 存資料
+ next 指向下一個節點
+*/
 struct Node {
     int data;
     Node* next;
