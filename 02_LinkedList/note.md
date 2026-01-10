@@ -1,27 +1,99 @@
-# Linked List
+# Linked List（鏈結串列）
 
-## 1. Definition
-A linked list is a linear data structure where elements are connected using pointers.
+## 1. Definition（定義）
 
-## 2. Types
-- Singly linked list
-- Doubly linked list
-- Circular linked list
+Linked List（鏈結串列）是一種線性資料結構，由多個 **節點（Node）** 組成。  
+每個節點包含：
+- 一個資料欄位（data）
+- 一個指向下一個節點的指標（next）
 
-## 3. Characteristics
-- Dynamic size
-- Non-contiguous memory
-- Efficient insertion and deletion
+節點在記憶體中**不需要連續存放**，透過指標彼此串接。
 
-## 4. Comparison with Array
-- Access: O(n)
-- Insert/Delete: O(1)
+---
 
-## 5. Reflection
-Linked lists are suitable when frequent insertions and deletions are required.
-Head
-↓
-┌─────┬──────┐ ┌─────┬──────┐ ┌─────┬──────┐
-│ 10 │ ●───┼──▶│ 20 │ ●───┼──▶│ 30 │ null │
-└─────┴──────┘ └─────┴──────┘ └─────┴──────┘
-data next
+## 2. Characteristics（特性）
+
+| 特性 | 說明 |
+|----|----|
+| 動態大小 | 不需事先指定大小 |
+| 非連續記憶體 | 節點分散存放 |
+| 插入刪除快 | 不需大量搬移資料 |
+| 存取較慢 | 無法直接用 index |
+
+---
+
+## 3. Time & Space Complexity（時間與空間複雜度）
+
+### 時間複雜度（Time Complexity）
+
+| 操作 | Big-O | 說明 |
+|----|----|----|
+| 存取（Access） | O(n) | 必須從頭走訪 |
+| 搜尋（Search） | O(n) | 逐節點比對 |
+| 插入（Insert） | O(1)* | 已知位置時 |
+| 刪除（Delete） | O(1)* | 已知位置時 |
+
+\* 若需先搜尋位置，則為 O(n)
+
+---
+
+### 空間複雜度（Space Complexity）
+
+| 項目 | 複雜度 |
+|----|----|
+| Linked List 本身 | O(n) |
+| 額外指標空間 | O(n) |
+
+每個節點都需要額外的指標空間。
+
+---
+
+## 4. Advantages & Disadvantages（優缺點）
+
+### 優點
+- 大小可動態調整
+- 插入、刪除效率高
+- 適合資料量變動的情況
+
+### 缺點
+- 存取速度慢
+- 額外指標造成記憶體負擔
+- 實作較 Array 複雜
+
+---
+
+## 5. Use Cases（使用情境）
+
+- 不確定資料數量
+- 頻繁插入與刪除
+- 實作 Stack、Queue
+- 多項目動態管理系統
+
+---
+
+## 6. Common Problems for Beginners（初次學習可能遇到的問題）
+
+### 1️⃣ 指標概念不熟
+初學者常搞混「節點本身」與「指向節點的指標」，  
+導致存取錯誤或程式當掉。
+
+---
+
+### 2️⃣ 忘記更新 next 指標
+在插入或刪除節點時，  
+若未正確更新 `next`，可能造成：
+- 節點遺失
+- 無限迴圈
+
+---
+
+### 3️⃣ Head 節點處理錯誤
+刪除或插入在第一個節點時，  
+忘記更新 `head` 是常見錯誤。
+
+---
+
+### 4️⃣ 記憶體洩漏（Memory Leak）
+使用 `new` 配置節點卻未 `delete`，  
+長時間執行可能導致記憶體耗盡。
+
