@@ -19,3 +19,9 @@ A linked list is a linear data structure where elements are connected using poin
 
 ## 5. Reflection
 Linked lists are suitable when frequent insertions and deletions are required.
+Head
+↓
+┌─────┬──────┐ ┌─────┬──────┐ ┌─────┬──────┐
+│ 10 │ ●───┼──▶│ 20 │ ●───┼──▶│ 30 │ null │
+└─────┴──────┘ └─────┴──────┘ └─────┴──────┘
+data next
