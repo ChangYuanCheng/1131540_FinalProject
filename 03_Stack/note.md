@@ -67,11 +67,11 @@ Stack（堆疊）是一種線性資料結構，由多個 **元素（Element）**
 
 ## 6. Common Problems for Beginners（初次學習可能遇到的問題）
 
-### 1️⃣ Stack Overflow
+### 1. Stack Overflow
 使用陣列實作時，Push 超過容量但未檢查。
 
-### 2️⃣ Stack Underflow
+### 2. Stack Underflow
 在 Stack 為空時仍執行 Pop。
 
-### 3️⃣ Top 指標更新錯誤
+### 3. Top 指標更新錯誤
 Push / Pop 後未正確更新 `top`，導致資料錯亂。

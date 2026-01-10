@@ -68,17 +68,17 @@ Queue（佇列）是一種線性資料結構，由多個 **元素（Element）**
 
 ## 6. Common Problems for Beginners（初次學習可能遇到的問題）
 
-### 1️⃣ 指標/索引混亂
+### 1. 指標/索引混亂
 - 使用陣列實作時，Front、Rear 指標容易搞混  
 - 例如：Front 指向隊首元素，Rear 指向下一個可插入位置  
 - 初學者可能誤以為 Front/Rear 都指向元素本身，導致刪除或插入錯誤
 
-### 2️⃣ Queue Overflow（溢位）與假溢位
+### 2. Queue Overflow（溢位）與假溢位
 - 固定大小陣列超過容量時未檢查，造成溢位  
 - 循環隊列 (Circular Queue) 的 Front = Rear 情況容易誤判為溢位或空隊列  
 - 初學者常忽略 modulo 運算更新 Rear，導致插入失敗
 
-### 3️⃣ Queue Underflow（空隊列操作）
+### 3. Queue Underflow（空隊列操作）
 - 在空隊列執行 Dequeue 或 Peek  
 - Linked List Queue 若未檢查 head，會 dereference 空指標  
 - 初學者常忘記在 Dequeue 後更新 Front，導致無限循環或資料錯亂
