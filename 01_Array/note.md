@@ -1,12 +1,77 @@
-# Array
+# Array（陣列）
 
-## 1. Definition
-An array is a collection of elements stored in contiguous memory locations.
+## 1. Definition（定義）
 
-## 2. Characteristics
-- Fixed size
-- Direct access using index
-- Efficient access: O(1)
+Array（陣列）是一種線性資料結構，用於儲存**相同資料型態**的元素，
+並將所有元素存放於**連續的記憶體位置**中。
+由於記憶體連續，Array 可以透過索引（index）在 **O(1)** 時間內存取資料。
 
-## 3. Reflection
-Array is simple and fast for indexed access.
+---
+
+## 2. Memory Layout（記憶體配置）
+
+
+---
+
+## 3. Characteristics（特性）
+
+| 特性 | 說明 |
+|----|----|
+| 固定大小 | 宣告後大小不可變 |
+| 連續記憶體 | 提升快取命中率 |
+| 索引存取 | 直接存取元素 |
+| 高效率 | 存取時間 O(1) |
+
+---
+
+## 4. Time & Space Complexity（時間與空間複雜度）
+
+### 時間複雜度（Time Complexity）
+
+| 操作 | Big-O | 說明 |
+|----|----|----|
+| 存取（Access） | O(1) | 透過 index 直接存取 |
+| 搜尋（Search） | O(n) | 線性搜尋 |
+| 插入（Insert） | O(n) | 需搬移元素 |
+| 刪除（Delete） | O(n) | 需補齊空缺 |
+
+---
+
+### 空間複雜度（Space Complexity）
+
+| 情況 | 空間複雜度 |
+|----|----|
+| Array 本身 | O(n) |
+| 額外空間 | O(1) |
+
+📌 Array 不需要額外指標，因此空間使用效率高。
+
+---
+
+## 5. Advantages & Disadvantages（優缺點）
+
+### 優點
+- 存取速度快
+- 結構簡單
+- 記憶體連續、效率高
+
+### 缺點
+- 大小固定，不具彈性
+- 插入與刪除成本高
+
+---
+
+## 6. Use Cases（使用情境）
+
+- 成績表
+- 靜態資料查詢
+- 排序後資料（Binary Search）
+- 圖像像素資料
+
+---
+
+## 7. Reflection（學習反思）
+
+Array 讓我理解「記憶體配置與效能」的關係。
+透過實作插入與刪除操作，我明確感受到資料結構選擇對效能的影響，
+這也讓我在設計程式時，更能根據需求選擇合適的資料結構。
